@@ -94,3 +94,15 @@ ReactDOM.render(
 
 - then start server
 npm start
+
+
+
+//In Addition to them need to install some libraries
+rc-time-picker
+react-datetime
+react-phone-number-input
+react-phone-number-input/rrui.css
+react-phone-number-input/style.css
+JSON2
+MD5
+
