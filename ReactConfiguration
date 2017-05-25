@@ -1,0 +1,96 @@
+- First enter command npm init and press enter to get basic configuration
+
+- Then as second step
+npm install react react-dom --save
+It will install react and react-dom into machine.
+
+- Then we need to install transpilers as a list
+npm install babel-loader babel-core babel-preset-es2015 babel-preset-react
+
+-  Then we need to create files.
+-  touch index.html App.js main.js webpack.config.js
+
+-  Then we need to install webpack using the following command
+-  npm install babel webpack webpack-dev-server -g
+
+- Open webpack.config.js and write the text
+module.exports = {
+}
+It is the basic syntax for the file
+
+- We need to provide entry for the file to start reading.
+- then we need to specify the output path and the file name.
+- Then we will provide dev server configuration such as port number
+- then we need to provide loaders information in the module object.
+- Sample webpack.config.js is below
+
+- module.exports = {
+entry:'./main.js',
+output :{
+     path:'/',
+     filename: 'index.js'
+},
+devServer: {
+      inline : true,
+      port: 3333
+  },
+  module:{
+      loaders: [
+        {
+             test: /\.js$/,
+             exclude: /node_modules/,
+             loader: 'babel-loader',
+             query: {
+                  presets: ['es2015','react']
+              }
+         }
+       ]
+  }
+}
+
+- Now we can start with index.html
+
+- <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Import test</title>
+</head>
+<body>
+  <div id="app"></div>
+          <script src="index.js"></script>
+</body>
+</html>
+
+- Now we will start doing App.js
+
+- import React from 'react';
+
+           class App extends React.Component {
+               render() {
+                    return(
+                           <div>
+                                 Srinivas
+                           </div>
+                     )
+                 }
+           }
+
+       export default App
+
+- Now we will start doing main.js
+
+- import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App.js';
+ReactDOM.render(
+<App />,document.getElementById('app'));
+
+- Now we need to do small modification in the scripts object of package.json as
+
+- "scripts" : {
+       "start" : "webpack-dev-server"
+}
+
+- then start server
+npm start
